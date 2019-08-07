@@ -1,0 +1,14 @@
+[
+  "test_test.py::TestDistance::test_add_markers",
+  "test_test.py::TestDistance::test_distance_all",
+  "test_test.py::TestDistance::test_distance_between_neighbors",
+  "test_test.py::TestDistance::test_distance_location",
+  "test_test.py::TestDistance::test_location",
+  "test_test.py::TestDistance::test_map_from",
+  "test_test.py::TestDistance::test_markers_from_trips",
+  "test_test.py::TestDistance::test_nearest_neighbors",
+  "test_test.py::TestDistance::test_parse_trips_has_lat_and_longitude",
+  "test_test.py::TestDistance::test_parse_trips_returns_attributes_of_lat_long_and_distance",
+  "test_test.py::TestDistance::test_parse_trips_returns_entry_for_each_trip",
+  "test_test.py::TestDistance::test_to_marker"
+]

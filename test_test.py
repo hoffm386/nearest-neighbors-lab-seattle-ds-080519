@@ -1,6 +1,7 @@
 import unittest
-from ipynb.fs.full.index import (trips, parse_trips, distance_location, location, to_marker,
+from index import (trips, parse_trips, distance_location, location, to_marker,
  markers_from_trips, map_from, add_markers, distance_location, distance_between_neighbors, distance_all, nearest_neighbors)
+
 import json
 class TestDistance(unittest.TestCase):
     parsed_trips = parse_trips(trips)
@@ -29,7 +30,7 @@ class TestDistance(unittest.TestCase):
     def test_to_marker(self):
         marker = to_marker([40.7589, -73.9851])
         self.assertEqual(marker.location, [40.7589, -73.9851])
-        self.assertEqual(json.loads(marker.options)['radius'], 6)
+        self.assertEqual(marker.options['radius'], 6)
 
     def test_markers_from_trips(self):
         cleaned_trips = [{'pickup_latitude': 40.64499, 'pickup_longitude': -73.78115, 'trip_distance': 18.38},
@@ -46,7 +47,6 @@ class TestDistance(unittest.TestCase):
     def test_map_from(self):
         times_map = map_from([40.7589, -73.9851], 15)
         self.assertEqual(times_map.location, [40.7589, -73.9851])
-        self.assertEqual(times_map.zoom_start, 15)
 
     def test_add_markers(self):
         cleaned_trips = [{'pickup_latitude': 40.64499, 'pickup_longitude': -73.78115, 'trip_distance': 18.38},
@@ -70,10 +70,28 @@ class TestDistance(unittest.TestCase):
 
     def test_distance_all(self):
         first_trip = {'pickup_latitude': 40.64499, 'pickup_longitude': -73.78115, 'trip_distance': 18.38}
-        cleaned_trips = [{'pickup_latitude': 40.64499, 'pickup_longitude': -73.78115, 'trip_distance': 18.38},
-        {'pickup_latitude': 40.766931, 'pickup_longitude': -73.982098, 'trip_distance': 1.3},
-        {'pickup_latitude': 40.77773, 'pickup_longitude': -73.951902, 'trip_distance': 4.5},
-        {'pickup_latitude': 40.795678, 'pickup_longitude': -73.971049, 'trip_distance': 2.4}]
+        cleaned_trips = [
+            {
+                'pickup_latitude': 40.64499,
+                'pickup_longitude': -73.78115,
+                'trip_distance': 18.38
+            },
+            {
+                'pickup_latitude': 40.766931,
+                'pickup_longitude': -73.982098,
+                'trip_distance': 1.3
+            },
+            {
+                'pickup_latitude': 40.77773,
+                'pickup_longitude': -73.951902,
+                'trip_distance': 4.5
+            },
+            {
+                'pickup_latitude': 40.795678,
+                'pickup_longitude': -73.971049,
+                'trip_distance': 2.4
+            }
+        ]
         distance_trips = [{'distance_from_selected': 0.23505256047318146, 'pickup_latitude': 40.766931, 'pickup_longitude': -73.982098, 'trip_distance': 1.3},
         {'distance_from_selected': 0.2162779533470808, 'pickup_latitude': 40.77773, 'pickup_longitude': -73.951902, 'trip_distance': 4.5},
         {'distance_from_selected': 0.24242215976473674, 'pickup_latitude': 40.795678, 'pickup_longitude': -73.971049, 'trip_distance': 2.4}]
